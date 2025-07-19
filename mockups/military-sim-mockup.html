@@ -19,6 +19,21 @@
             justify-content: center;
             min-height: 100vh;
             padding: 1.5rem;
+            background-image: url('../../07. Blackout.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            z-index: -1;
         }
 
         .server-browser-container {
@@ -261,6 +276,27 @@
         </div>
     </div>
 
+
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        function initTheme() {
+            const themeParam = getUrlParameter('theme');
+
+            if (themeParam) {
+                const themeValue = "themes/" + themeParam + ".css";
+                const stylesheet = document.getElementById('theme-stylesheet');
+                stylesheet.href = themeValue;
+            }
+        }
+
+        // Run initTheme when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
 </body>
 
 </html>
