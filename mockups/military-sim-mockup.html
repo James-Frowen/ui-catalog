@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Military Sim Mockup (UI Catalog)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link id="theme-stylesheet" href="../themes/modern-minimalist.css" rel="stylesheet">
+    <style>
+        /* Page-specific layout styles */
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1.5rem;
+        }
+
+        .server-browser-container {
+            width: 100%;
+            max-width: 1600px;
+            height: 80vh;
+            max-height: 900px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 1.5rem;
+        }
+
+        .server-list-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            overflow: hidden;
+        }
+
+        .server-list-view {
+           flex-grow: 1;
+           overflow-y: auto;
+           display: flex;
+           flex-direction: column;
+           gap: 0.5rem;
+        }
+
+        .server-list-header, .server-list-entry {
+            display: grid;
+            grid-template-columns: 1fr 40px 120px 80px 80px;
+            gap: 1rem;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+         .server-list-header {
+            color: var(--text-muted-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .server-list-entry:hover {
+            background-color: var(--surface-hover-color);
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+        }
+
+        .ping-good { color: #4ade80; }
+        .ping-medium { color: #facc15; }
+        .ping-high { color: #f87171; }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="server-browser-container">
+        <div class="panel server-list-panel">
+            <div class="server-list-header">
+                <span>Name / Mission / Map</span>
+                <div style="text-align: center;"><i class="fa-solid fa-server"></i></div>
+                <div style="text-align: center;">Players</div>
+                <div style="text-align: center;">Uptime</div>
+                <div style="text-align: center;">Ping</div>
+            </div>
+            <div class="list-view server-list-view">
+                <!-- Server Entry 1 -->
+                <div class="list-item server-list-entry">
+                    <div>
+                        <div class="text-title">[Dedicated PVP] | Official Atom Task Force Server</div>
+                        <div class="text-subtitle">Heartland | Valley</div>
+                    </div>
+                    <div style="text-align: center;"><i class="fa-solid fa-server"></i></div>
+                    <div style="text-align: center;">12 / 128</div>
+                    <div style="text-align: center;">2h 30m</div>
+                    <div style="text-align: center;" class="ping-good">28ms</div>
+                </div>
+                <!-- Server Entry 2 -->
+                <div class="list-item server-list-entry">
+                    <div>
+                        <div class="text-title">Escalation Co-op as BDF</div>
+                        <div class="text-subtitle">Mountain Pass - Ignus Archipelago</div>
+                    </div>
+                    <div style="text-align: center;"><i class="fa-solid fa-user"></i> <i class="fa-solid fa-lock"></i></div>
+                    <div style="text-align: center;">2 / 18</div>
+                    <div style="text-align: center;">1h 15m</div>
+                    <div style="text-align: center;" class="ping-good">54ms</div>
+                </div>
+                <!-- Server Entry 3 -->
+                <div class="list-item server-list-entry">
+                    <div>
+                        <div class="text-title">24/7 Guns Only - City Futsal</div>
+                        <div class="text-subtitle">Urban Assault - Heartland</div>
+                    </div>
+                    <div style="text-align: center;"><i class="fa-solid fa-server"></i> <i class="fa-solid fa-lock"></i></div>
+                    <div style="text-align: center;">3 / 33</div>
+                    <div style="text-align: center;">5h 00m</div>
+                    <div style="text-align: center;" class="ping-medium">98ms</div>
+                </div>
+                 <!-- Server Entry 4 -->
+                <div class="list-item server-list-entry">
+                     <div>
+                        <div class="text-title">[EU] FoxTwo | 24/7 Dedicated</div>
+                        <div class="text-subtitle">Rising Tsunami - Ignus Archipelago</div>
+                    </div>
+                    <div style="text-align: center;"><i class="fa-solid fa-server"></i></div>
+                    <div style="text-align: center;">1 / 64</div>
+                    <div style="text-align: center;">8h 45m</div>
+                    <div style="text-align: center;" class="ping-high">152ms</div>
+                </div>
+            </div>
+             <button class="btn btn-subtle">Load More</button>
+        </div>
+
+        <div class="side-panel">
+            <button class="btn btn-outline" style="width: 100%; margin-bottom: 1rem;"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
+            <input type="text" class="input-text" placeholder="Search games..." style="margin-bottom: 1.5rem;">
+            
+            <h3 class="heading-3">Filters</h3>
+            <div class="toggle-switch">
+                <span>Hide Full</span>
+                <input type="checkbox" id="hide-full-right" checked>
+                <label class="toggle-label" for="hide-full-right"></label>
+            </div>
+            <div class="toggle-switch">
+                <span>Hide Passworded</span>
+                <input type="checkbox" id="hide-password-right">
+                <label class="toggle-label" for="hide-password-right"></label>
+            </div>
+
+            <hr class="hr">
+
+            <h3 class="heading-3">Mission Type</h3>
+            <div class="segmented-control" style="width: 100%;">
+                <input type="radio" id="type-all-right" name="mission-type-right" checked><label for="type-all-right" style="flex: 1;">All</label>
+                <input type="radio" id="type-pvp-right" name="mission-type-right"><label for="type-pvp-right" style="flex: 1;">PvP</label>
+                <input type="radio" id="type-pve-right" name="mission-type-right"><label for="type-pve-right" style="flex: 1;">PvE</label>
+            </div>
+
+            <hr class="hr">
+            
+            <h3 class="heading-3">Server Type</h3>
+             <div class="segmented-control" style="width: 100%;">
+                <input type="radio" id="server-type-all" name="server-type-right" checked><label for="server-type-all" style="flex: 1;">All</label>
+                <input type="radio" id="server-type-dedi" name="server-type-right"><label for="server-type-dedi" style="flex: 1;">Dedi</label>
+                <input type="radio" id="server-type-player" name="server-type-right"><label for="server-type-player" style="flex: 1;">Player</label>
+            </div>
+
+            <div style="margin-top: auto; padding-top: 1rem;">
+                 <button class="btn btn-primary" style="width: 100%; margin-bottom: 0.5rem;">Create New Lobby</button>
+                 <button class="btn btn-danger" style="width: 100%;">Back</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -11,6 +11,11 @@
     --text-on-primary-color: #1a1d21;
     --text-muted-color: #8a93a2;
     --border-color: #4a515c;
+
+    /* Status Colors */
+    --status-success-color: #4ade80;
+    --status-warning-color: #facc15;
+    --status-danger-color: #f87171;
 }
 
 body {
@@ -74,6 +79,14 @@ body {
     font-size: 0.85rem;
     color: var(--text-muted-color);
 }
+
+.font-mono {
+    font-family: 'Brass Mono', monospace;
+}
+
+.text-status-success { color: var(--status-success-color); }
+.text-status-warning { color: var(--status-warning-color); }
+.text-status-danger { color: var(--status-danger-color); }
 
 
 /* --- Buttons --- */
@@ -494,4 +507,24 @@ body {
 
 .compact-list-item .text-title {
     font-size: 0.9rem;
+}
+
+.sortable {
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.sortable:hover,
+.sortable.active {
+    color: var(--text-color);
+}
+
+.sortable i {
+    margin-left: 4px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.sortable.active i {
+    opacity: 1;
 }
