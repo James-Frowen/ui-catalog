@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Component Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link id="theme-stylesheet" href="modern-minimalist.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 2rem;
+            padding-left: 350px;
+            /* Space for side panel */
+        }
+
+        .style-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background-color: #2c3138;
+            padding: 0.5rem;
+            border: 1px solid #4a515c;
+            z-index: 1000;
+        }
+
+        .style-switcher select {
+            background-color: #1a1d21;
+            color: #e0e0e0;
+            border: 1px solid #4a515c;
+            padding: 0.25rem;
+        }
+
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="style-switcher">
+        <label for="style-select" style="color: #e0e0e0; font-size: 0.8rem; margin-right: 0.5rem;">Theme:</label>
+        <select id="style-select" onchange="switchStyle()">
+            <option value="modern-minimalist.css">Modern Minimalist</option>
+            <!-- Add other stylesheet options here -->
+        </select>
+    </div>
+
+    <div class="side-panel">
+        <h1 class="heading-1">Side Bar</h1>
+
+        <h2>With Compact Inputs </h2>
+        <p class="text-body">used in areas with limited space, like this side panel.</p>
+        <hr class="hr">
+        <div class="input-group-compact">
+            <label class="text-label">Name</label>
+            <input type="text" class="input-text" placeholder="Enter name...">
+        </div>
+        <div class="input-group-compact">
+            <label class="text-label">Faction</label>
+            <select class="dropdown">
+                <option>Blufor</option>
+                <option>Opfor</option>
+                <option>Independent</option>
+            </select>
+        </div>
+        <div class="input-group-compact">
+            <label class="text-label">Skill</label>
+            <input type="range" min="1" max="100" value="75" class="slider">
+        </div>
+        <div class="input-group-compact">
+            <label class="text-label">God Mode</label>
+            <div class="toggle-switch">
+                <input type="checkbox" id="override-check-compact">
+                <label class="toggle-label" for="override-check-compact"></label>
+            </div>
+        </div>
+
+    </div>
+
+    <h1 class="heading-1" style="margin-left: 32px;">UI Component Catalog</h1>
+
+    <!-- Typography Section -->
+    <div class="panel">
+        <h2>Typography</h2>
+        <h1 class="heading-1">Heading 1</h1>
+        <h2 class="heading-2">Heading 2</h2>
+        <h3 class="heading-3">Heading 3 / Section Header</h3>
+        <p class="text-body">This is the body text. It's used for descriptions and general content. Lorem ipsum dolor
+            sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+        <div>
+            <span class="text-title">Item Title</span>
+            <p class="text-subtitle">Item Subtitle or additional info</p>
+        </div>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="panel">
+        <h2>Buttons</h2>
+        <div class="component-grid">
+            <div>
+                <h3 class="heading-3">Standard Buttons</h3>
+                <button class="btn btn-primary">Primary</button>
+                <button class="btn btn-danger">Danger</button>
+                <button class="btn btn-outline">Outline</button>
+                <button class="btn btn-subtle">Subtle</button>
+                <button class="btn btn-primary" disabled>Disabled</button>
+            </div>
+            <div>
+                <h3 class="heading-3">Arrow Buttons</h3>
+                <button class="btn btn-primary btn-arrow"><i class="fa-solid fa-arrow-left"></i> Prev</button>
+                <button class="btn btn-primary btn-arrow">Next <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+            <div>
+                <h3 class="heading-3">Icon Buttons</h3>
+                <p class="text-subtitle">Normal, Selected, Disabled</p>
+                <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-gear"></i></button>
+                <button class="btn btn-subtle btn-icon selected"><i class="fa-solid fa-star"></i></button>
+                <button class="btn btn-subtle btn-icon" disabled><i class="fa-solid fa-trash"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Inputs Section -->
+    <div class="panel">
+        <h2>Form Inputs</h2>
+        <div class="component-grid">
+            <div>
+                <h3 class="heading-3">Text Input</h3>
+                <label class="text-label" for="demo-input-normal">Normal</label>
+                <input type="text" id="demo-input-normal" class="input-text" placeholder="Enter text...">
+                <label class="text-label" style="margin-top: 1rem;" for="demo-input-disabled">Disabled</label>
+                <input type="text" id="demo-input-disabled" class="input-text" placeholder="Cannot edit" disabled>
+            </div>
+
+            <div>
+                <h3 class="heading-3">Override Field</h3>
+                <div class="override-field">
+                    <input type="checkbox" id="override-check" onchange="toggleOverride(this, 'override-target')"
+                        checked>
+                    <input type="text" id="override-target" class="input-text" placeholder="Override value">
+                </div>
+                <div class="override-field" style="margin-top: 1rem;">
+                    <input type="checkbox" id="override-check-2" onchange="toggleOverride(this, 'override-target-2')">
+                    <input type="text" id="override-target-2" class="input-text" placeholder="Inherited Value" disabled>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="heading-3">Vector3 Input</h3>
+                <div class="vector3-input">
+                    <input type="text" class="input-text" value="1.0">
+                    <input type="text" class="input-text" value="2.5">
+                    <input type="text" class="input-text" value="-3.0">
+                </div>
+            </div>
+
+            <div>
+                <h3 class="heading-3">Dropdown / Select</h3>
+                <select class="dropdown" style="width: 100%;">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                    <option>Option 3: A much longer option</option>
+                </select>
+                <select class="dropdown" style="width: 100%; margin-top: 1rem;" disabled>
+                    <option>Disabled Dropdown</option>
+                </select>
+            </div>
+
+            <div>
+                <h3 class="heading-3">Toggle Switch</h3>
+                <div class="toggle-switch">
+                    <span>Enabled</span>
+                    <input type="checkbox" id="demo-toggle" checked>
+                    <label class="toggle-label" for="demo-toggle"></label>
+                </div>
+                <div class="toggle-switch">
+                    <span>Disabled</span>
+                    <input type="checkbox" id="demo-toggle-2">
+                    <label class="toggle-label" for="demo-toggle-2"></label>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="heading-3">Segmented Control</h3>
+                <div class="segmented-control">
+                    <input type="radio" id="seg-1" name="segment" checked><label for="seg-1">Alpha</label>
+                    <input type="radio" id="seg-2" name="segment"><label for="seg-2">Bravo</label>
+                    <input type="radio" id="seg-3" name="segment"><label for="seg-3">Charlie</label>
+                </div>
+            </div>
+        </div>
+
+        <hr class="hr">
+
+        <div>
+            <h3 class="heading-3">Slider</h3>
+            <input type="range" min="1" max="100" value="50" class="slider">
+            <h3 class="heading-3" style="margin-top: 1rem;">Disabled Slider</h3>
+            <input type="range" min="1" max="100" value="25" class="slider" disabled>
+        </div>
+
+    </div>
+
+    <!-- Containers & Lists Section -->
+    <div class="panel">
+        <h2>Containers & Lists</h2>
+
+        <div class="component-grid">
+            <div>
+                <h3 class="heading-3">Image Selector</h3>
+                <div class="image-selector">
+                    <img src="assets/aircraft-1.jpg" alt="placeholder" class="selected">
+                    <img src="assets/aircraft-2.jpg" alt="placeholder">
+                    <img src="assets/aircraft-3.jpg" alt="placeholder">
+                </div>
+            </div>
+            <div>
+                <h3 class="heading-3">Card</h3>
+                <div class="card">
+                    <span class="text-title">Card Title</span>
+                    <p class="text-body">A simple card container.</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="hr">
+
+        <h3 class="heading-3">Compact List View</h3>
+        <div class="list-view compact-list-view">
+            <div class="compact-list-item">
+                <i class="drag-handle fa-solid fa-grip-vertical"></i>
+                <div class="list-item-controls">
+                    <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-arrow-up"></i></button>
+                    <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-arrow-down"></i></button>
+                </div>
+                <div style="margin-left: 15px;">
+                    <div class="text-title">Item A</div>
+                    <div class="text-subtitle">Subtext for Item A</div>
+                </div>
+            </div>
+            <div class="compact-list-item">
+                <i class="drag-handle fa-solid fa-grip-vertical"></i>
+                <div class="list-item-controls">
+                    <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-arrow-up"></i></button>
+                    <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-arrow-down"></i></button>
+                </div>
+                <div style="margin-left: 15px;">
+                    <div class="text-title">Item B</div>
+                    <div class="text-subtitle">Subtext for Item B</div>
+                </div>
+            </div>
+            <div class="compact-list-item">
+                <i class="drag-handle fa-solid fa-grip-vertical"></i>
+                <div class="list-item-controls">
+                    <button class="btn btn-subtle btn-icon" disabled><i class="fa-solid fa-arrow-up"></i></button>
+                    <button class="btn btn-subtle btn-icon" disabled><i class="fa-solid fa-arrow-down"></i></button>
+                </div>
+                <div style="margin-left: 15px;">
+                    <div class="text-title">Item C (Disabled)</div>
+                    <div class="text-subtitle">Subtext for Item C</div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="hr">
+
+        <h3 class="heading-3">Detailed List View</h3>
+        <div class="list-view">
+            <div class="list-header">
+                <div>Name</div>
+                <div>Status</div>
+                <div>Value</div>
+            </div>
+            <div class="list-item">
+                <div>
+                    <div class="text-title">List Item 1</div>
+                    <div class="text-subtitle">Description for item 1</div>
+                </div>
+                <div>Active</div>
+                <div>128</div>
+            </div>
+            <div class="list-item">
+                <div>
+                    <div class="text-title">List Item 2</div>
+                    <div class="text-subtitle">Description for item 2</div>
+                </div>
+                <div>Inactive</div>
+                <div>54</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchStyle() {
+            const select = document.getElementById('style-select');
+            const stylesheet = document.getElementById('theme-stylesheet');
+            stylesheet.href = select.value;
+        }
+
+        function toggleOverride(checkbox, targetId) {
+            const targetInput = document.getElementById(targetId);
+            if (checkbox.checked) {
+                targetInput.disabled = false;
+            } else {
+                targetInput.disabled = true;
+            }
+        }
+
+        // Image Selector Logic
+        document.querySelectorAll('.image-selector img').forEach(item => {
+            item.addEventListener('click', event => {
+                // Remove selected class from all images in this group
+                item.parentElement.querySelectorAll('img').forEach(img => img.classList.remove('selected'));
+                // Add selected class to the clicked image
+                event.target.classList.add('selected');
+            })
+        });
+    </script>
+
+</body>
+
+</html>
