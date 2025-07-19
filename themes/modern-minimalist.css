@@ -401,7 +401,6 @@ body {
     background-color: rgba(26, 29, 33, 0.2);
     border: 1px solid var(--border-color);
     padding: 1.5rem;
-    backdrop-filter: blur(10px);
     margin: 32px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     border-radius: 0;
@@ -511,7 +510,6 @@ body {
 }
 
 .scrollable-list {
-    max-height: 300px; /* Example max height */
     overflow-y: auto;
     border: 1px solid var(--border-color);
 }

@@ -47,6 +47,11 @@
             align-items: center;
             padding: 0 1.5rem;
         }
+
+        .ui-catalog-scrollable-list {
+            max-height: 300px;
+            /* Example max height */
+        }
     </style>
 </head>
 
@@ -255,7 +260,7 @@
         <hr class="hr">
 
         <h3 class="heading-3">Compact List View</h3>
-        <div class="list-view compact-list-view scrollable-list">
+        <div class="list-view compact-list-view scrollable-list ui-catalog-scrollable-list">
             <div class="compact-list-item">
                 <i class="drag-handle fa-solid fa-grip-vertical"></i>
                 <div class="list-item-controls">
@@ -349,7 +354,7 @@
         <hr class="hr">
 
         <h3 class="heading-3">Detailed List View</h3>
-        <div class="list-view scrollable-list">
+        <div class="list-view scrollable-list ui-catalog-scrollable-list">
             <div class="list-header ui-catalog-list-grid">
                 <div>Name</div>
                 <div>Status</div>
