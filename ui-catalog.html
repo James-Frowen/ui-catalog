@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link id="theme-stylesheet" href="modern-minimalist.css" rel="stylesheet">
+    <link id="theme-stylesheet" href="themes/modern-minimalist.css" rel="stylesheet">
     <style>
         body {
             padding: 2rem;
@@ -47,7 +47,8 @@
     <div class="style-switcher">
         <label for="style-select" style="color: #e0e0e0; font-size: 0.8rem; margin-right: 0.5rem;">Theme:</label>
         <select id="style-select" onchange="switchStyle()">
-            <option value="modern-minimalist.css">Modern Minimalist</option>
+            <option value="themes/modern-minimalist.css">Modern Minimalist</option>
+            <option value="themes/steel-ember.css">Steel Ember</option>
             <!-- Add other stylesheet options here -->
         </select>
     </div>
@@ -313,6 +314,36 @@
                 targetInput.disabled = true;
             }
         }
+
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        function initTheme() {
+            const themeParam = getUrlParameter('theme');
+
+            if (themeParam) {
+                const themeValue = "themes/" + themeParam + ".css";
+                const select = document.getElementById('style-select');
+                const stylesheet = document.getElementById('theme-stylesheet');
+                let optionFound = false;
+                // Check if the URL theme parameter matches any option in the select dropdown
+                for (let i = 0; i < select.options.length; i++) {
+                    if (select.options[i].value === themeValue) {
+                        select.value = themeValue; // Set the dropdown to the URL theme
+                        optionFound = true;
+                        break;
+                    }
+                }
+                // Apply the theme from the URL parameter, regardless if it's in the select options
+                stylesheet.href = themeValue;
+            }
+        }
+
+        // Run initTheme when the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', initTheme);
 
         // Image Selector Logic
         document.querySelectorAll('.image-selector img').forEach(item => {
