@@ -288,7 +288,7 @@
             const themeParam = getUrlParameter('theme');
 
             if (themeParam) {
-                const themeValue = "themes/" + themeParam + ".css";
+                const themeValue = "../themes/" + themeParam + ".css";
                 const stylesheet = document.getElementById('theme-stylesheet');
                 stylesheet.href = themeValue;
             }
