@@ -550,6 +550,10 @@ body {
     font-weight: 600;
 }
 
+.compact-list-item .text-subtitle {
+    font-size: 0.75rem;
+}
+
 .sortable {
     cursor: pointer;
     transition: color 0.2s;
@@ -568,4 +572,24 @@ body {
 
 .sortable.active i {
     opacity: 1;
+}
+
+.scrollable-list {
+    max-height: 300px; /* Example max height */
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+}
+
+/* Custom Scrollbar for Webkit browsers */
+.scrollable-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollable-list::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+.scrollable-list::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
 }
