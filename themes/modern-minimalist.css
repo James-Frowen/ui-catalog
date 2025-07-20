@@ -1,14 +1,14 @@
-/* modern-minimalist.css */
+/* modern-minimalist.css (Restored and Merged) */
 
 :root {
     --bg-color: #1a1d21;
     --surface-color: #2c313899;
     --surface-hover-color: #3a4049;
-    --primary-color: #58e187;
+    --primary-color: #58e187; /* Brighter green */
     --danger-color: #dc3545;
     --danger-hover-color: #c82333;
     --text-color: #e0e0e0;
-    --text-on-primary-color: #333;
+    --text-on-primary-color: #333; /* Darker text for primary buttons */
     --text-muted-color: #8a93a2;
     --border-color: #4a515c;
 
@@ -23,7 +23,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     margin: 0;
-    padding: 2rem;
+    padding: 2rem; /* Restored for UI Catalog */
 }
 
 .panel h2 {
@@ -73,15 +73,23 @@ body {
     font-size: 1.1rem;
     font-weight: 500;
     color: var(--text-color);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .text-subtitle {
     font-size: 0.85rem;
     color: var(--text-muted-color);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .font-mono {
     font-family: 'Brass Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .text-status-success { color: var(--status-success-color); }
@@ -101,6 +109,13 @@ body {
     font-size: 1rem;
     display: inline-block;
     margin: 0.25rem;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .btn-primary {
@@ -127,6 +142,8 @@ body {
     background-color: transparent;
     color: var(--text-muted-color);
     border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
 }
 
 .btn-outline:hover {
@@ -237,6 +254,10 @@ body {
     width: fit-content;
 }
 
+.segmented-control.full-width {
+    width: 100%;
+}
+
 .segmented-control input {
     display: none;
 }
@@ -251,6 +272,10 @@ body {
     transition: background-color 0.2s;
     font-size: 0.9rem;
     color: var(--text-color);
+}
+
+.segmented-control.full-width label {
+    padding: 0.6rem 0;
 }
 
 .segmented-control label:not(:last-child) {
@@ -397,6 +422,19 @@ body {
 
 
 /* --- Containers & Lists --- */
+.side-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 100vh;
+    background-color: var(--bg-color);
+    padding: 1.5rem;
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+    z-index: 999;
+}
+
 .panel {
     background-color: rgba(26, 29, 33, 0.2);
     border: 1px solid var(--border-color);
@@ -435,7 +473,10 @@ body {
     font-size: 0.9rem;
     font-weight: 600;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color);
+    /* border-bottom: 1px solid var(--border-color); */ /* Removed as requested */
+    text-transform: none;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
 }
 
 .list-item {
@@ -514,17 +555,151 @@ body {
     border: 1px solid var(--border-color);
 }
 
+.server-list-view {
+    overflow-y: auto;
+    padding-right: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-grow: 1;
+    border: none;
+}
+
 /* Custom Scrollbar for Webkit browsers */
-.scrollable-list::-webkit-scrollbar {
+.scrollable-list::-webkit-scrollbar, .server-list-view::-webkit-scrollbar {
     width: 6px;
 }
 
-.scrollable-list::-webkit-scrollbar-track {
+.scrollable-list::-webkit-scrollbar-track, .server-list-view::-webkit-scrollbar-track {
     background: var(--bg-color);
     border-radius: 0;
 }
 
-.scrollable-list::-webkit-scrollbar-thumb {
+.scrollable-list::-webkit-scrollbar-thumb, .server-list-view::-webkit-scrollbar-thumb {
     background: var(--border-color);
     border-radius: 0;
+}
+
+
+/* --- Tabs --- */
+.tab-container {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.tab {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+    color: var(--text-muted-color);
+}
+
+.tab:hover {
+    color: var(--text-color);
+}
+
+.tab.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+
+/* --- Notifications --- */
+.notification {
+    padding: 1rem;
+    border-radius: 0;
+    border: 1px solid;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notification-success {
+    background-color: rgba(74, 222, 128, 0.1);
+    border-color: var(--status-success-color);
+    color: var(--status-success-color);
+}
+
+.notification-warning {
+    background-color: rgba(250, 204, 21, 0.1);
+    border-color: var(--status-warning-color);
+    color: var(--status-warning-color);
+}
+
+.notification-danger {
+    background-color: rgba(248, 113, 113, 0.1);
+    border-color: var(--status-danger-color);
+    color: var(--status-danger-color);
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+
+/* --- Tooltip --- */
+[data-tooltip] {
+    position: relative;
+    cursor: pointer;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 5px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- Mockup Specific --- */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.filter-group h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted-color);
+    text-transform: none;
+    letter-spacing: 0.5px;
+}
+
+.toggle-switch-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
