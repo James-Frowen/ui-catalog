@@ -573,7 +573,6 @@ body {
 }
 
 .scrollable-list {
-    max-height: 300px; /* Example max height */
     overflow-y: auto;
     border: 1px solid var(--border-color);
 }
