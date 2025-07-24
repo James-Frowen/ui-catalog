@@ -176,6 +176,11 @@ body {
     color: var(--text-on-primary-color);
 }
 
+.btn:disabled, .btn[disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
 
 /* --- Form Inputs --- */
 .input-text {
