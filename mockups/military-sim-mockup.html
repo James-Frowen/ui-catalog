@@ -14,7 +14,8 @@
     <style>
         /* Page-specific layout styles */
         body {
-            padding: 0; /* Override theme padding */
+            padding: 0;
+            /* Override theme padding */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -45,10 +46,12 @@
             grid-template-columns: 1fr 280px;
             gap: 1.5rem;
             overflow: hidden;
-            margin: 0; /* Override theme margin */
+            margin: 0;
+            /* Override theme margin */
         }
 
-        .server-list-panel, .filters-panel {
+        .server-list-panel,
+        .filters-panel {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
@@ -63,9 +66,9 @@
             align-items: center;
             padding: 0 1.5rem;
         }
-        
+
         .server-list-grid-item {
-             padding: 1rem 1.5rem;
+            padding: 1rem 1.5rem;
         }
 
         .header-name-mission-group {
@@ -85,7 +88,7 @@
         .server-icons .fa-server {
             color: var(--primary-color);
         }
-        
+
         .server-details {
             text-align: center;
         }
@@ -94,6 +97,39 @@
             display: flex;
             justify-content: center;
             padding: 1rem;
+        }
+
+        .list-item.server-list-grid-item {
+            cursor: pointer;
+        }
+
+        .details-grid {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: space-between;
+        }
+
+        .modal-layout-container {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .modal-right-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .details-grid-2x2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .details-grid-2x1 {
+            display: grid;
+            grid-template-columns: 1fr 100px;
+            gap: 1.5rem;
         }
     </style>
 </head>
@@ -116,8 +152,11 @@
                 <div class="sortable server-details">Ping <i class="fa-solid fa-caret-down"></i></div>
             </div>
             <div class="server-list-view">
-                <div class="list-item server-list-grid-item">
-                    <div>
+                <div class="list-item server-list-grid-item" onclick="openModal(this)">
+                    <div data-name="[Dedicated PVP] | Official Atom Task Force Server" data-mission="Heartland"
+                        data-map="Valley" data-players="12 / 128" data-uptime="2h 30m" data-ping="28ms"
+                        data-description="This is a long-form description of the mission. It could contain details about the objectives, the backstory, or any special rules. Players can read this to get a better understanding of what they are about to join. For this mockup, the text is just a placeholder to demonstrate the layout."
+                        data-dedicated="true" data-password="false">
                         <div class="text-title">[Dedicated PVP] | Official Atom Task Force Server</div>
                         <div class="text-subtitle">Heartland | Valley</div>
                     </div>
@@ -128,8 +167,11 @@
                     <div class="font-mono server-details">2h 30m</div>
                     <div class="font-mono server-details text-status-success">28ms</div>
                 </div>
-                <div class="list-item server-list-grid-item">
-                    <div>
+                <div class="list-item server-list-grid-item" onclick="openModal(this)">
+                    <div data-name="Escalation Co-op as BDF" data-mission="Mountain Pass" data-map="Ignus Archipelago"
+                        data-players="2 / 18" data-uptime="1h 15m" data-ping="54ms"
+                        data-description="Another mission description, this time for a co-op scenario. This one might detail the enemy forces, the available equipment, and the primary goals for the players to achieve together."
+                        data-dedicated="false" data-password="true">
                         <div class="text-title">Escalation Co-op as BDF</div>
                         <div class="text-subtitle">Mountain Pass - Ignus Archipelago</div>
                     </div>
@@ -141,8 +183,11 @@
                     <div class="font-mono server-details">1h 15m</div>
                     <div class="font-mono server-details text-status-success">54ms</div>
                 </div>
-                <div class="list-item server-list-grid-item">
-                    <div>
+                <div class="list-item server-list-grid-item" onclick="openModal(this)">
+                    <div data-name="24/7 Guns Only - City Futsal" data-mission="Urban Assault" data-map="Heartland"
+                        data-players="3 / 33" data-uptime="5h 00m" data-ping="98ms"
+                        data-description="A fast-paced, action-packed urban combat scenario. This description would likely emphasize the close-quarters nature of the map and the specific rules of engagement."
+                        data-dedicated="true" data-password="true">
                         <div class="text-title">24/7 Guns Only - City Futsal</div>
                         <div class="text-subtitle">Urban Assault - Heartland</div>
                     </div>
@@ -154,8 +199,11 @@
                     <div class="font-mono server-details">5h 00m</div>
                     <div class="font-mono server-details text-status-warning">98ms</div>
                 </div>
-                <div class="list-item server-list-grid-item">
-                    <div>
+                <div class="list-item server-list-grid-item" onclick="openModal(this)">
+                    <div data-name="[EU] FoxTwo | 24/7 Dedicated" data-mission="Rising Tsunami"
+                        data-map="Ignus Archipelago" data-players="1 / 64" data-uptime="8h 45m" data-ping="152ms"
+                        data-description="A large-scale conflict scenario. The description might detail the different roles available for players, the strategic objectives, and the expected duration of the mission."
+                        data-dedicated="true" data-password="false">
                         <div class="text-title">[EU] FoxTwo | 24/7 Dedicated</div>
                         <div class="text-subtitle">Rising Tsunami - Ignus Archipelago</div>
                     </div>
@@ -166,8 +214,11 @@
                     <div class="font-mono server-details">8h 45m</div>
                     <div class="font-mono server-details text-status-danger">152ms</div>
                 </div>
-                <div class="list-item server-list-grid-item">
-                    <div>
+                <div class="list-item server-list-grid-item" onclick="openModal(this)">
+                    <div data-name="The Chill Zone" data-mission="Paradise Island" data-map="Heartland"
+                        data-players="5 / 20" data-uptime="0h 45m" data-ping="35ms"
+                        data-description="A more relaxed and casual gameplay experience. The description would reflect this, perhaps mentioning social features or non-combat activities available to players."
+                        data-dedicated="false" data-password="false">
                         <div class="text-title">The Chill Zone</div>
                         <div class="text-subtitle">Paradise Island - Heartland</div>
                     </div>
@@ -178,8 +229,11 @@
                     <div class="font-mono server-details">0h 45m</div>
                     <div class="font-mono server-details text-status-success">35ms</div>
                 </div>
-                <div class="list-item server-list-grid-item">
-                    <div>
+                <div class="list-item server-list-grid-item" onclick="openModal(this)">
+                    <div data-name="Hardcore Realism" data-mission="Operation Desert Storm" data-map="Ignus Archipelago"
+                        data-players="20 / 40" data-uptime="12h 10m" data-ping="110ms"
+                        data-description="For players seeking a challenging and immersive experience. The description would detail the hardcore ruleset, such as limited HUD, realistic ballistics, and friendly fire."
+                        data-dedicated="true" data-password="false">
                         <div class="text-title">Hardcore Realism</div>
                         <div class="text-subtitle">Ignus Archipelago | Operation Desert Storm</div>
                     </div>
@@ -190,8 +244,11 @@
                     <div class="font-mono server-details">12h 10m</div>
                     <div class="font-mono server-details text-status-warning">110ms</div>
                 </div>
-                <div class="list-item server-list-grid-item">
-                    <div>
+                <div class="list-item server-list-grid-item" onclick="openModal(this)">
+                    <div data-name="Newbie Friendly PVE" data-mission="Tutorial Valley" data-map="Heartland"
+                        data-players="8 / 16" data-uptime="3h 20m" data-ping="42ms"
+                        data-description="A great place for new players to learn the ropes. The description would highlight the helpful community and the cooperative nature of the missions."
+                        data-dedicated="false" data-password="false">
                         <div class="text-title">Newbie Friendly PVE</div>
                         <div class="text-subtitle">Tutorial Valley - Heartland</div>
                     </div>
@@ -202,8 +259,11 @@
                     <div class="font-mono server-details">3h 20m</div>
                     <div class="font-mono server-details text-status-success">42ms</div>
                 </div>
-                <div class="list-item server-list-grid-item">
-                    <div>
+                <div class="list-item server-list-grid-item" onclick="openModal(this)">
+                    <div data-name="[JP] Anime Fans Unite!" data-mission="Akihabara" data-map="Ignus Archipelago"
+                        data-players="30 / 32" data-uptime="6h 55m" data-ping="250ms"
+                        data-description="A server for fans of anime and Japanese culture. The description might be in both English and Japanese and mention specific anime-themed mods or content."
+                        data-dedicated="true" data-password="true">
                         <div class="text-title">[JP] Anime Fans Unite!</div>
                         <div class="text-subtitle">Akihabara - Ignus Archipelago</div>
                     </div>
@@ -215,8 +275,11 @@
                     <div class="font-mono server-details">6h 55m</div>
                     <div class="font-mono server-details text-status-danger">250ms</div>
                 </div>
-                <div class="list-item server-list-grid-item">
-                    <div>
+                <div class="list-item server-list-grid-item" onclick="openModal(this)">
+                    <div data-name="Snipers Only" data-mission="Rooftops" data-map="Heartland" data-players="7 / 10"
+                        data-uptime="0h 50m" data-ping="60ms"
+                        data-description="A sniper'''s paradise. This description would focus on the long sightlines and the rules that restrict players to using only sniper rifles."
+                        data-dedicated="false" data-password="false">
                         <div class="text-title">Snipers Only</div>
                         <div class="text-subtitle">Heartland | Rooftops</div>
                     </div>
@@ -227,8 +290,11 @@
                     <div class="font-mono server-details">0h 50m</div>
                     <div class="font-mono server-details text-status-success">60ms</div>
                 </div>
-                <div class="list-item server-list-grid-item">
-                    <div>
+                <div class="list-item server-list-grid-item" onclick="openModal(this)">
+                    <div data-name="[AUS] OCEANIA TDM" data-mission="Outback" data-map="Ignus Archipelago"
+                        data-players="15 / 24" data-uptime="1h 05m" data-ping="15ms"
+                        data-description="A server for players in the Oceania region. The description would likely mention the low ping for local players and the popular game modes."
+                        data-dedicated="true" data-password="false">
                         <div class="text-title">[AUS] OCEANIA TDM</div>
                         <div class="text-subtitle">Ignus Archipelago | Outback</div>
                     </div>
@@ -246,9 +312,16 @@
         </div>
 
         <div class="filters-panel">
-            <button class="btn btn-outline btn-block"><i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
+            <button class="btn btn-outline btn-block">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="#1f1f1f">
+                    <path
+                        d="M480-160q-134 0-227-93t-93-227q0-134 93-227t227-93q69 0 132 28.5T720-690v-110h80v280H520v-80h168q-32-56-87.5-88T480-720q-100 0-170 70t-70 170q0 100 70 170t170 70q77 0 139-44t87-116h84q-28 106-114 173t-196 67Z" />
+                </svg>
+
+                <i class="fa-solid fa-arrows-rotate"></i> Refresh</button>
             <input type="text" class="input-text" placeholder="Search games...">
-            
+
             <div class="filter-group">
                 <h3>Filters</h3>
                 <div class="toggle-switch-group">
@@ -268,33 +341,98 @@
             <div class="filter-group">
                 <h3>Mission Type</h3>
                 <div class="segmented-control full-width">
-                    <input type="radio" id="type-all-right" name="mission-type-right" checked><label for="type-all-right">All</label>
-                    <input type="radio" id="type-pvp-right" name="mission-type-right"><label for="type-pvp-right">PvP</label>
-                    <input type="radio" id="type-pve-right" name="mission-type-right"><label for="type-pve-right">PvE</label>
+                    <input type="radio" id="type-all-right" name="mission-type-right" checked><label
+                        for="type-all-right">All</label>
+                    <input type="radio" id="type-pvp-right" name="mission-type-right"><label
+                        for="type-pvp-right">PvP</label>
+                    <input type="radio" id="type-pve-right" name="mission-type-right"><label
+                        for="type-pve-right">PvE</label>
                 </div>
             </div>
 
             <div class="filter-group">
                 <h3>Server Type</h3>
                 <div class="segmented-control full-width">
-                    <input type="radio" id="server-type-all" name="server-type-right" checked><label for="server-type-all">All</label>
-                    <input type="radio" id="server-type-dedi" name="server-type-right"><label for="server-type-dedi">Dedicated</label>
-                    <input type="radio" id="server-type-player" name="server-type-right"><label for="server-type-player">Player Host</label>
+                    <input type="radio" id="server-type-all" name="server-type-right" checked><label
+                        for="server-type-all">All</label>
+                    <input type="radio" id="server-type-dedi" name="server-type-right"><label
+                        for="server-type-dedi">Dedicated</label>
+                    <input type="radio" id="server-type-player" name="server-type-right"><label
+                        for="server-type-player">Player Host</label>
                 </div>
             </div>
-            
+
             <div class="filter-group">
                 <h3>Distance</h3>
                 <div class="segmented-control full-width">
-                    <input type="radio" id="dist-default-right" name="distance-right" checked><label for="dist-default-right">Default</label>
-                    <input type="radio" id="dist-far-right" name="distance-right"><label for="dist-far-right">Far</label>
-                    <input type="radio" id="dist-world-right" name="distance-right"><label for="dist-world-right">Worldwide</label>
+                    <input type="radio" id="dist-default-right" name="distance-right" checked><label
+                        for="dist-default-right">Default</label>
+                    <input type="radio" id="dist-far-right" name="distance-right"><label
+                        for="dist-far-right">Far</label>
+                    <input type="radio" id="dist-world-right" name="distance-right"><label
+                        for="dist-world-right">Worldwide</label>
                 </div>
             </div>
 
             <div style="margin-top: auto;">
                 <button class="btn btn-primary btn-block" style="margin-bottom: 0.75rem;">Create New Lobby</button>
                 <button class="btn btn-danger btn-block">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="lobby-details-modal" class="modal-overlay" style="display: none;" onclick="closeModal(event)">
+        <div class="panel modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modal-lobby-name"></h2>
+                <button class="btn btn-icon" onclick="closeModal()"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-layout-container">
+                    <div class="mission-preview">
+                        <img src="../assets/aircraft-1.jpg" alt="Mission Preview">
+                    </div>
+                    <div class="modal-right-panel">
+                        <div class="details-grid-2x1">
+                            <div class="detail-item">
+                                <h3>Mission</h3>
+                                <div id="modal-mission-name" class="text-title"></div>
+                            </div>
+                            <div class="detail-item">
+                                <h3>Map</h3>
+                                <div id="modal-map-name" class="text-title"></div>
+                            </div>
+                        </div>
+                        <div class="mission-description">
+                            <h3>Mission Description</h3>
+                            <p id="modal-description"></p>
+                        </div>
+                        <div class="details-grid-2x2">
+                            <div class="detail-item">
+                                <div class="text-label">Players</div>
+                                <div id="modal-players" class="font-mono"></div>
+                            </div>
+                            <div class="detail-item">
+                                <h3>Server Type</h3>
+                                <div id="modal-server-type" class="text-title"></div>
+                            </div>
+                            <div class="detail-item">
+                                <h3>Ping</h3>
+                                <div id="modal-ping" class="font-mono"></div>
+                            </div>
+                            <div class="detail-item">
+                                <h3>Uptime</h3>
+                                <div id="modal-uptime" class="font-mono"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" id="open-workshop-button">Workshop</button>
+
+                <button class="btn btn-primary" id="join-lobby-button">Join Lobby</button>
             </div>
         </div>
     </div>
@@ -316,6 +454,54 @@
             }
         }
         document.addEventListener('DOMContentLoaded', initTheme);
+
+        // Modal Logic
+        const modal = document.getElementById('lobby-details-modal');
+
+        function openModal(element) {
+            const dataElement = element.querySelector('[data-name]');
+            const name = dataElement.dataset.name;
+            const mission = dataElement.dataset.mission;
+            const map = dataElement.dataset.map;
+            const players = dataElement.dataset.players;
+            const uptime = dataElement.dataset.uptime;
+            const ping = dataElement.dataset.ping;
+            const description = dataElement.dataset.description;
+            const isDedicated = dataElement.dataset.dedicated === 'true';
+            const isPasswordProtected = dataElement.dataset.password === 'true';
+
+            document.getElementById('modal-lobby-name').textContent = name;
+            document.getElementById('modal-mission-name').textContent = mission;
+            document.getElementById('modal-map-name').textContent = map;
+            document.getElementById('modal-players').textContent = players;
+            document.getElementById('modal-ping').textContent = ping;
+            document.getElementById('modal-uptime').textContent = uptime;
+            document.getElementById('modal-server-type').textContent = isDedicated ? 'Dedicated' : 'Player Hosted';
+            document.getElementById('modal-description').textContent = description;
+
+            const joinButton = document.getElementById('join-lobby-button');
+            if (isPasswordProtected) {
+                joinButton.innerHTML = '<i class="fa-solid fa-lock"></i> Join Lobby';
+            } else {
+                joinButton.innerHTML = 'Join Lobby';
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal(event) {
+            if (event && event.target !== modal) {
+                return;
+            }
+            modal.style.display = 'none';
+        }
+
+        // Add a keydown event listener to close the modal with the Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") {
+                modal.style.display = 'none';
+            }
+        });
     </script>
 </body>
 
