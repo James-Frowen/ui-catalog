@@ -126,9 +126,15 @@
             gap: 1.5rem;
         }
 
+        .details-grid-4x1 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 1.5rem;
+        }
+
         .details-grid-2x1 {
             display: grid;
-            grid-template-columns: 1fr 100px;
+            grid-template-columns: 1fr 200px;
             gap: 1.5rem;
         }
     </style>
@@ -406,11 +412,11 @@
                         </div>
                         <div class="mission-description">
                             <h3>Mission Description</h3>
-                            <p id="modal-description"></p>
+                            <div id="modal-description" class="text-body"></div>
                         </div>
-                        <div class="details-grid-2x2">
+                        <div class="details-grid-4x1">
                             <div class="detail-item">
-                                <div class="text-label">Players</div>
+                                <h3>Players</h3>
                                 <div id="modal-players" class="font-mono"></div>
                             </div>
                             <div class="detail-item">

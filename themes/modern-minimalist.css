@@ -717,8 +717,9 @@ h3 {
 }
 
 .modal-content {
+    background-color: rgb(from var(--surface-color) r g b / 0.85);
     width: 100%;
-    max-width: 800px;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
