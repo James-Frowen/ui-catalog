@@ -381,8 +381,52 @@
             </div>
 
             <div style="margin-top: auto;">
-                <button class="btn btn-primary btn-block" style="margin-bottom: 0.75rem;">Create New Lobby</button>
+                <button class="btn btn-primary btn-block" style="margin-bottom: 0.75rem;"
+                    onclick="openCreateModal()">Create New Lobby</button>
                 <button class="btn btn-danger btn-block">Back</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Lobby Modal -->
+    <div id="create-lobby-modal" class="modal-overlay" style="display: none;">
+        <div class="panel modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>Create New Game</h2>
+                <button class="btn btn-icon" onclick="closeCreateModal()"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="lobby-name">Lobby Name</label>
+                    <input type="text" id="lobby-name" class="input-text" placeholder="Enter lobby name...">
+                </div>
+                <div class="form-group">
+                    <label>Mission</label>
+                    <button class="btn btn-primary btn-block">Choose Mission</button>
+                </div>
+                <div class="form-group">
+                    <label>Lobby Type</label>
+                    <div class="segmented-control full-width">
+                        <input type="radio" id="lobby-public" name="lobby-type" checked><label for="lobby-public">Public</label>
+                        <input type="radio" id="lobby-friends" name="lobby-type"><label for="lobby-friends">Friends</label>
+                        <input type="radio" id="lobby-private" name="lobby-type"><label for="lobby-private">Private</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="override-field">
+                        <input type="checkbox" id="password-override-check" onchange="toggleOverride(this, 'password-input')">
+                        <input type="password" id="password-input" class="input-text" placeholder="Enter password..." disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="max-players">Max Players: <span id="max-players-value">16</span></label>
+                    <input type="range" id="max-players" class="slider" min="2" max="128" value="16">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" onclick="closeCreateModal()">Cancel</button>
+                <button class="btn btn-primary">Create Lobby</button>
             </div>
         </div>
     </div>
@@ -502,11 +546,39 @@
             modal.style.display = 'none';
         }
 
+        function toggleOverride(checkbox, targetId) {
+            const targetInput = document.getElementById(targetId);
+            if (checkbox.checked) {
+                targetInput.disabled = false;
+            } else {
+                targetInput.disabled = true;
+            }
+        }
+
         // Add a keydown event listener to close the modal with the Escape key
         document.addEventListener('keydown', function (event) {
             if (event.key === "Escape") {
-                modal.style.display = 'none';
+                closeModal();
+                closeCreateModal();
             }
+        });
+
+        // Create Lobby Modal Logic
+        const createModal = document.getElementById('create-lobby-modal');
+
+        function openCreateModal() {
+            createModal.style.display = 'flex';
+        }
+
+        function closeCreateModal() {
+            createModal.style.display = 'none';
+        }
+
+        // Slider value display
+        const maxPlayersSlider = document.getElementById('max-players');
+        const maxPlayersValue = document.getElementById('max-players-value');
+        maxPlayersSlider.addEventListener('input', (event) => {
+            maxPlayersValue.textContent = event.target.value;
         });
     </script>
 </body>
