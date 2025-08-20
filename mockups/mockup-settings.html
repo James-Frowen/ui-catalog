@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup - Settings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Brass+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link id="theme-stylesheet" href="../themes/modern-minimalist.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url('../assets/07. Blackout.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            z-index: -1;
+        }
+
+        .settings-container {
+            width: 100%;
+            max-width: 900px;
+            height: 80vh;
+            max-height: 700px;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--bg-color); /* More pronounced background */
+            border: 1px solid var(--border-color);
+        }
+
+        .settings-content {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 2rem; /* Increased padding */
+        }
+
+        .settings-footer {
+            display: flex;
+            justify-content: space-between; /* Changed to space-between */
+            gap: 1rem;
+            padding: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 1.5rem;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="panel settings-container">
+        <div class="tab-container">
+            <div class="tab active" onclick="openTab(event, 'graphics')">Graphics</div>
+            <div class="tab" onclick="openTab(event, 'gameplay')">Gameplay</div>
+            <div class="tab" onclick="openTab(event, 'controls')">Controls</div>
+        </div>
+
+        <div id="graphics" class="settings-content tab-content active">
+            <div class="form-grid">
+                <label class="text-label">Resolution</label>
+                <select class="dropdown">
+                    <option>1920x1080</option>
+                    <option>2560x1440</option>
+                    <option>3840x2160</option>
+                </select>
+
+                <label class="text-label">Display Mode</label>
+                <div class="segmented-control">
+                    <input type="radio" id="mode-fullscreen" name="display-mode" checked><label for="mode-fullscreen">Fullscreen</label>
+                    <input type="radio" id="mode-windowed" name="display-mode"><label for="mode-windowed">Windowed</label>
+                    <input type="radio" id="mode-borderless" name="display-mode"><label for="mode-borderless">Borderless</label>
+                </div>
+
+                <label class="text-label">Texture Quality</label>
+                <select class="dropdown">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option selected>High</option>
+                    <option>Ultra</option>
+                </select>
+
+                <label class="text-label">Shadow Quality</label>
+                <select class="dropdown">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option selected>High</option>
+                    <option>Ultra</option>
+                </select>
+
+                <label class="text-label">Anti-Aliasing</label>
+                <select class="dropdown">
+                    <option>None</option>
+                    <option>FXAA</option>
+                    <option selected>TAA</option>
+                </select>
+
+                <label class="text-label">VSync</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="vsync-toggle">
+                    <label class="toggle-label" for="vsync-toggle"></label>
+                </div>
+
+                <label class="text-label">Framerate Limit</label>
+                <input type="range" class="slider" min="30" max="240" value="144">
+
+            </div>
+        </div>
+
+        <div id="gameplay" class="settings-content tab-content">
+            <div class="form-grid">
+                <label class="text-label">Field of View</label>
+                <input type="range" class="slider" min="70" max="110" value="90">
+
+                <label class="text-label">Mouse Sensitivity</label>
+                <input type="range" class="slider" min="1" max="100" value="50">
+
+                <label class="text-label">Show HUD</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="show-hud-toggle" checked>
+                    <label class="toggle-label" for="show-hud-toggle"></label>
+                </div>
+
+                <label class="text-label">Show Hints</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="show-hints-toggle" checked>
+                    <label class="toggle-label" for="show-hints-toggle"></label>
+                </div>
+
+                <label class="text-label">Invert Mouse</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="invert-mouse-toggle">
+                    <label class="toggle-label" for="invert-mouse-toggle"></label>
+                </div>
+
+                <label class="text-label">Damage Numbers</label>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="damage-numbers-toggle" checked>
+                    <label class="toggle-label" for="damage-numbers-toggle"></label>
+                </div>
+
+                <label class="text-label">Crosshair Type</label>
+                <div class="segmented-control">
+                    <input type="radio" id="crosshair-dot" name="crosshair-type" checked><label for="crosshair-dot">Dot</label>
+                    <input type="radio" id="crosshair-cross" name="crosshair-type"><label for="crosshair-cross">Cross</label>
+                    <input type="radio" id="crosshair-none" name="crosshair-type"><label for="crosshair-none">None</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="controls" class="settings-content tab-content">
+            <div class="form-grid">
+                <label class="text-label">Forward</label>
+                <button class="btn btn-outline">W</button>
+
+                <label class="text-label">Backward</label>
+                <button class.btn btn-outline">S</button>
+
+                <label class="text-label">Strafe Left</label>
+                <button class="btn btn-outline">A</button>
+
+                <label class="text-label">Strafe Right</label>
+                <button class="btn btn-outline">D</button>
+
+                <label class="text-label">Jump</label>
+                <button class="btn btn-outline">Space</button>
+
+                <label class="text-label">Crouch</label>
+                <button class="btn btn-outline">C</button>
+
+                <label class="text-label">Sprint</label>
+                <button class="btn btn-outline">Shift</button>
+
+                <label class="text-label">Fire</label>
+                <button class="btn btn-outline">Mouse 1</button>
+
+                <label class="text-label">Aim</label>
+                <button class="btn btn-outline">Mouse 2</button>
+
+                <label class="text-label">Reload</label>
+                <button class="btn btn-outline">R</button>
+
+                <label class="text-label">Interact</label>
+                <button class="btn btn-outline">E</button>
+            </div>
+        </div>
+
+
+        <div class="settings-footer">
+            <button class="btn btn-danger" onclick="window.location.href='mockup-main-menu.html'">Back</button>
+            <div>
+                <button class="btn btn-outline">Revert</button>
+                <button class="btn btn-primary">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\[').replace(/[\]]/, '\]');
+            var regex = new RegExp('[\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        function initTheme() {
+            const themeParam = getUrlParameter('theme');
+
+            if (themeParam) {
+                const themeValue = "../themes/" + themeParam + ".css";
+                const stylesheet = document.getElementById('theme-stylesheet');
+                stylesheet.href = themeValue;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', initTheme);
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Set the default active tab
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.tab.active').click();
+        });
+    </script>
+</body>
+
+</html>

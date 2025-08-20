@@ -315,17 +315,13 @@ h3 {
 
 .slider {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     max-width: 400px;
     height: 5px;
-    background: var(--surface-color);
+    background: var(--surface-color); /* Simple, solid track color */
     outline: none;
-    opacity: 0.7;
-    transition: opacity .2s;
-}
-
-.slider:hover {
-    opacity: 1;
+    border-radius: 0;
 }
 
 .slider::-webkit-slider-thumb {
@@ -335,6 +331,9 @@ h3 {
     height: 25px;
     background: var(--primary-color);
     cursor: pointer;
+    border-radius: 0; /* Square handle */
+    /* Vertically center the thumb on the track */
+    margin-top: -10px;
 }
 
 .slider::-moz-range-thumb {
@@ -342,8 +341,11 @@ h3 {
     height: 25px;
     background: var(--primary-color);
     cursor: pointer;
+    border-radius: 0; /* Square handle */
+    border: none; /* Remove Firefox's default border */
 }
 
+/* --- Disabled State --- */
 .slider:disabled {
     opacity: 0.4;
     cursor: not-allowed;

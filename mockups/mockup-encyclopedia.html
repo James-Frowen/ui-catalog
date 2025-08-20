@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup - Encyclopedia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Brass+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link id="theme-stylesheet" href="../themes/modern-minimalist.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url('../assets/07. Blackout.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            z-index: -1;
+        }
+
+        .encyclopedia-container {
+            width: 100%;
+            max-width: 1400px;
+            height: 80vh;
+            max-height: 800px;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 1.5rem;
+        }
+
+        .entry-list-panel,
+        .entry-details-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            background-color: var(--bg-color);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .entry-list {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .entry-details {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .stats-table {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 0.5rem 1rem;
+        }
+
+        .stats-table .stat-label {
+            font-weight: 600;
+            color: var(--text-muted-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="encyclopedia-container">
+        <div class="panel entry-list-panel">
+            <input type="text" class="input-text" placeholder="Search encyclopedia...">
+            <div class="list-view entry-list">
+                <div class="list-item">
+                    <div class="text-title">M1A1 Abrams</div>
+                </div>
+                <div class="list-item">
+                    <div class="text-title">T-72</div>
+                </div>
+                <div class="list-item">
+                    <div class="text-title">AK-47</div>
+                </div>
+                <div class="list-item">
+                    <div class="text-title">M4A1</div>
+                </div>
+                <div class="list-item">
+                    <div class="text-title">AH-64 Apache</div>
+                </div>
+            </div>
+            <button class="btn btn-danger btn-block" onclick="window.location.href='mockup-main-menu.html'">Back</button>
+        </div>
+        <div class="panel entry-details-panel">
+            <h2 class="heading-2">M1A1 Abrams</h2>
+            <div class="entry-details">
+                <img src="../assets/aircraft-1.jpg" alt="M1A1 Abrams" style="width: 100%; height: 300px; object-fit: cover; margin-bottom: 1.5rem;">
+                <p class="text-body">The M1 Abrams is a third-generation American main battle tank designed by Chrysler Defense (now General Dynamics Land Systems). Conceived for modern armored ground warfare and now one of the heaviest tanks in service at nearly 68 short tons (almost 62 metric tons), it introduced several innovative features, including a multifuel turbine engine, sophisticated Chobham composite armor, a computer fire control system, separate ammunition storage in a blow-out compartment, and NBC protection for crew safety.</p>
+                <hr class="hr">
+                <h3 class="heading-3">Specifications</h3>
+                <div class="stats-table">
+                    <div class="stat-label">Main Armament</div>
+                    <div class="stat-value">120 mm L/44 M256A1 smoothbore gun</div>
+
+                    <div class="stat-label">Secondary Armament</div>
+                    <div class="stat-value">.50 cal M2HB machine gun, 7.62 mm M240 machine gun</div>
+
+                    <div class="stat-label">Engine</div>
+                    <div class="stat-value">Honeywell AGT1500 gas turbine</div>
+
+                    <div class="stat-label">Power</div>
+                    <div class="stat-value">1,500 shp (1,120 kW)</div>
+
+                    <div class="stat-label">Operational Range</div>
+                    <div class="stat-value">465 km</div>
+
+                    <div class="stat-label">Maximum Speed</div>
+                    <div class="stat-value">72 km/h</div>
+                </div>
+            </div>
+    </div>
+
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\[').replace(/[\]]/, '\]');
+            var regex = new RegExp('[\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        function initTheme() {
+            const themeParam = getUrlParameter('theme');
+
+            if (themeParam) {
+                const themeValue = "../themes/" + themeParam + ".css";
+                const stylesheet = document.getElementById('theme-stylesheet');
+                stylesheet.href = themeValue;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
+</body>
+
+</html>
