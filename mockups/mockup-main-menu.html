@@ -46,13 +46,15 @@
         .main-menu-container {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem; /* Reduced gap */
+            gap: 0.5rem;
+            /* Reduced gap */
             text-align: left;
             padding: 2rem;
         }
 
         .main-menu-container .heading-1 {
-            font-size: 3.5rem; /* Larger title */
+            font-size: 3.5rem;
+            /* Larger title */
             text-align: left;
             margin-bottom: 2rem;
         }
@@ -66,7 +68,8 @@
             color: var(--text-muted-color);
         }
 
-        .menu-item:hover, .menu-item.active {
+        .menu-item:hover,
+        .menu-item.active {
             color: var(--text-color);
             background-color: var(--surface-color);
         }
@@ -90,8 +93,10 @@
     <div class="main-menu-layout">
         <div class="main-menu-container">
             <h1 class="heading-1">PROJECT BRIGADOR</h1>
+            <div class="menu-item" onclick="window.location.href='mockup-singleplayer-mission-select.html'">SINGLEPLAYER
+            </div>
             <div class="menu-item active" onclick="window.location.href='mockup-multiplayer.html'">MULTIPLAYER</div>
-            <div class="menu-item" onclick="window.location.href='mockup-singleplayer-mission-select.html'">SINGLEPLAYER</div>
+            <div class="menu-item active" onclick="window.location.href='mockup-mission-editor.html'">Editor</div>
             <div class="menu-item" onclick="window.location.href='mockup-encyclopedia.html'">ENCYCLOPEDIA</div>
             <div class="menu-item" onclick="window.location.href='mockup-settings.html'">SETTINGS</div>
             <div class="menu-item">CREDITS</div>
