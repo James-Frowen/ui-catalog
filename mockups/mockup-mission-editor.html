@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup - Mission Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Brass+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link id="theme-stylesheet" href="../themes/modern-minimalist.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-image: url('../assets/07. Blackout.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            margin: 0;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        .editor-layout {
+            display: flex;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+        }
+
+        .top-bar .left-group,
+        .top-bar .right-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .left-panel {
+            width: 320px;
+            flex-shrink: 0;
+            background-color: var(--bg-color);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            background-color: #000; /* Placeholder for map view */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 2rem;
+            background-image: url('https://raw.githubusercontent.com/NuclearOption/NuclearOption-Web/main/src/assets/maps/map_grid.png');
+            background-size: cover;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <div class="left-group">
+            <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-plane"></i></button>
+            <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-truck"></i></button>
+            <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-ship"></i></button>
+            <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-building"></i></button>
+            <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-rocket"></i></button>
+            <span style="border-left: 1px solid var(--border-color); margin: 0 0.5rem;"></span>
+            <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-mouse-pointer"></i></button>
+            <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-arrows-up-down-left-right"></i></button>
+            <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-rotate"></i></button>
+            <button class="btn btn-subtle btn-icon"><i class="fa-solid fa-ruler-combined"></i></button>
+        </div>
+        <div class="right-group">
+            <button class="btn btn-primary">Play</button>
+            <button class="btn btn-outline">New</button>
+            <button class="btn btn-outline">Load</button>
+            <button class="btn btn-outline">Save</button>
+            <button class="btn btn-danger" onclick="window.location.href='mockup-main-menu.html'">Exit</button>
+        </div>
+    </div>
+
+    <div class="editor-layout">
+        <div class="left-panel">
+            <div class="button-group" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <button class="btn btn-outline btn-block">Copy Unit Info</button>
+                <button class="btn btn-outline btn-block">Paste Unit Info</button>
+                <button class="btn btn-outline btn-block">Place</button>
+                <button class="btn btn-danger btn-block">Remove</button>
+            </div>
+            <hr class="hr">
+            <div class="form-group">
+                <label class="text-label">Unique Name</label>
+                <input type="text" class="input-text" value="HLT-R">
+            </div>
+            <div class="form-group">
+                <label class="text-label">Faction</label>
+                <select class="dropdown">
+                    <option>Neutral</option>
+                    <option>Blufor</option>
+                    <option>Opfor</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="text-label">Type</label>
+                <input type="text" class="input-text" value="HLT Radar Truck" disabled>
+            </div>
+            <hr class="hr">
+            <div class="form-group">
+                <label class="text-label">Position</label>
+                <div class="vector3-input">
+                    <input type="text" class="input-text" value="10023.2">
+                    <input type="text" class="input-text" value="89.2">
+                    <input type="text" class="input-text" value="2640.4">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="text-label">Rotation</label>
+                 <div class="vector3-input">
+                    <input type="text" class="input-text" value="0.0">
+                    <input type="text" class="input-text" value="9.2">
+                    <input type="text" class="input-text" value="0.0">
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="text-label">AI Skill: <span class="font-mono">0.7</span></label>
+                <input type="range" class="slider" min="0" max="1" step="0.1" value="0.7">
+            </div>
+            <div class="toggle-switch">
+                <span>Hold Position</span>
+                <input type="checkbox" id="hold-pos-toggle" checked>
+                <label class="toggle-label" for="hold-pos-toggle"></label>
+            </div>
+            <hr class="hr">
+            <div class="form-group">
+                <label class="text-label">Another Property</label>
+                <input type="text" class="input-text" value="Some Value">
+            </div>
+             <div class="form-group">
+                <label class="text-label">Another Slider: <span class="font-mono">50</span></label>
+                <input type="range" class="slider" min="0" max="100" step="1" value="50">
+            </div>
+             <div class="toggle-switch">
+                <span>Another Toggle</span>
+                <input type="checkbox" id="another-toggle">
+                <label class="toggle-label" for="another-toggle"></label>
+            </div>
+            <div style="margin-top: auto;">
+                 <button class="btn btn-primary btn-block">Add Waypoint</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Main 3D map view placeholder -->
+        </div>
+    </div>
+
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\^\[\]]/g, "\\$1");
+            var regex = new RegExp('[\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+        function initTheme() {
+            const themeParam = getUrlParameter('theme');
+
+            if (themeParam) {
+                const themeValue = "../themes/" + themeParam + ".css";
+                const stylesheet = document.getElementById('theme-stylesheet');
+                stylesheet.href = themeValue;
+            }
+        }
+        document.addEventListener('DOMContentLoaded', initTheme);
+    </script>
+</body>
+
+</html>
